@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #87CEEB; /* Light Sky Blue */
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        #calculator-container {
+            width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2em;
+        }
+
+        label {
+            font-size: 1.2em;
+            display: block;
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2em;
+            width: 100%;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #4CAF50; /* Green */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 30px;
+            font-size: 1.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="calculator-container">
+        <h1>Age Calculator</h1>
+
+        <label for="dob">Enter your date of birth:</label>
+        <input type="date" id="dob" required>
+        <button onclick="calculateAge()">Calculate Age</button>
+
+        <h2>Your Age:</h2>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateAge() {
+            var dob = document.getElementById("dob").value;
+            var dobDate = new Date(dob);
+            var currentDate = new Date();
+
+            var ageInMilliseconds = currentDate - dobDate;
+            var ageInSeconds = ageInMilliseconds / 1000;
+            var ageInMinutes = ageInSeconds / 60;
+            var ageInHours = ageInMinutes / 60;
+            var ageInDays = ageInHours / 24;
+            var ageInYears = ageInDays / 365.25;
+
+            var age = Math.floor(ageInYears);
+
+            document.getElementById("result").innerHTML = "You are " + age + " years old.";
+        }
+    </script>
+
+</body>
+</html>
